@@ -11,6 +11,7 @@ public class EnderecoDTOResponse extends RepresentationModel<EnderecoDTOResponse
 	private String complemento;
 	private String cidade;
 	private String estado;
+	private Long clienteId;
 
 	public Long getId() {
 		return id;
@@ -68,4 +69,12 @@ public class EnderecoDTOResponse extends RepresentationModel<EnderecoDTOResponse
 		this.estado = estado;
 	}
 
+	public Long getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(Long clienteId) {
+		this.clienteId = clienteId;
+	}
+	
 }

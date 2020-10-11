@@ -7,6 +7,7 @@ import nossobancodigital.zup.endpoint.v1.controller.ClienteController;
 import nossobancodigital.zup.endpoint.v1.dto.request.ClienteDTORequest;
 import nossobancodigital.zup.endpoint.v1.dto.response.ClienteDTOResponse;
 import nossobancodigital.zup.entities.Cliente;
+import nossobancodigital.zup.enums.StatusEnum;
 
 @Component
 public class ClienteMapper extends RepresentationModelAssemblerSupport<Cliente, ClienteDTOResponse> {
@@ -22,9 +23,9 @@ public class ClienteMapper extends RepresentationModelAssemblerSupport<Cliente, 
 		clienteDTO.setNome(cliente.getNome());
 		clienteDTO.setSobrenome(cliente.getSobrenome());
 		clienteDTO.setEmail(cliente.getEmail());
-		clienteDTO.setCnh(cliente.getCnh());
+		clienteDTO.setCpf(cliente.getCpf());
 		clienteDTO.setDataDeNascimento(cliente.getDataNascimento());
-		
+				
 		return clienteDTO;
 	}
 	
@@ -33,8 +34,11 @@ public class ClienteMapper extends RepresentationModelAssemblerSupport<Cliente, 
 		cliente.setNome(clienteDTO.getNome());
 		cliente.setSobrenome(clienteDTO.getSobrenome());
 		cliente.setEmail(clienteDTO.getEmail());
-		cliente.setCnh(clienteDTO.getCnh());
+		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setDataNascimento(clienteDTO.getDataNascimento());
+		
+		//Seta status inicial do cadastro como pendente,
+		cliente.setStatus(StatusEnum.PENDENTE);
 		
 		return cliente;
 	}

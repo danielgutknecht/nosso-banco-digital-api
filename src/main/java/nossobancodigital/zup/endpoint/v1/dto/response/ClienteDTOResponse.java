@@ -1,7 +1,6 @@
 package nossobancodigital.zup.endpoint.v1.dto.response;
 
 import java.time.LocalDate;
-
 import org.springframework.hateoas.RepresentationModel;
 
 public class ClienteDTOResponse extends RepresentationModel<ClienteDTOResponse> {
@@ -9,9 +8,8 @@ public class ClienteDTOResponse extends RepresentationModel<ClienteDTOResponse> 
 	private Long id;
 	private String nome;
 	private String sobrenome;
-	private String cpf;
 	private String email;
-	private Integer cnh;
+	private String cpf;
 	private LocalDate dataDeNascimento;
 
 	public Long getId() {
@@ -38,14 +36,6 @@ public class ClienteDTOResponse extends RepresentationModel<ClienteDTOResponse> 
 		this.sobrenome = sobrenome;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -54,12 +44,12 @@ public class ClienteDTOResponse extends RepresentationModel<ClienteDTOResponse> 
 		this.email = email;
 	}
 
-	public Integer getCnh() {
-		return cnh;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCnh(Integer cnh) {
-		this.cnh = cnh;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public LocalDate getDataDeNascimento() {

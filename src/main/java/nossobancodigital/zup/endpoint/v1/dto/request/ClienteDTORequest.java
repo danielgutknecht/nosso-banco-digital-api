@@ -3,25 +3,28 @@ package nossobancodigital.zup.endpoint.v1.dto.request;
 import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.hateoas.RepresentationModel;
-
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ClienteDTORequest {
 
-	//@NotEmpty(message = "Nome não pode ser vazio.")
+	@NotEmpty(message = "Nome não pode ser vazio.")
+	@Length(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
 	private String nome;
-	//@NotEmpty(message = "Sobrenome não pode ser vazio.")
+	@Length(min = 3, max = 200, message = "Sobrenome deve conter entre 3 e 200 caracteres.")
+	@NotEmpty(message = "Sobrenome não pode ser vazio.")
 	private String sobrenome;
-	//@Email (message = "Email não pode ser vazio.")
+	@Length(min = 3, max = 200, message = "E-mail deve ter entre 3 e 200 caracters.")
+	@Email(message = "E-mail inválido. ")
 	private String email;
-	private Integer cnh;
-	//@NotEmpty(message = "Data de nascimento não pode ser vazio.")
+	@CPF(message = "CPF inválido.")
+	private String cpf;
+	@NotNull(message = "Data não pode ser vazia.")
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataNascimento;
 
-	
 	public String getNome() {
 		return nome;
 	}
@@ -46,12 +49,12 @@ public class ClienteDTORequest {
 		this.email = email;
 	}
 
-	public Integer getCnh() {
-		return cnh;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCnh(Integer cnh) {
-		this.cnh = cnh;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public LocalDate getDataNascimento() {

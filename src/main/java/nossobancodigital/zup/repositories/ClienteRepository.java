@@ -7,5 +7,9 @@ import nossobancodigital.zup.entities.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+	
+	Cliente findByCpf(String cpf);
+	
+	Boolean existsByCpf(String cpf);
 
 }

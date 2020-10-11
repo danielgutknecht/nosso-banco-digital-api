@@ -1,12 +1,12 @@
 package nossobancodigital.zup.endpoint.v1.dto.request;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 public class EnderecoDTORequest {
 
-	@NotEmpty(message = "CEP não pode ser vazio.")
-	@Pattern(regexp = "(\\\\d{2}) \\\\d{4}-\\\\d{4}")
+	
+	@NotNull(message = "CEP não pode ser vazio")
 	private Integer cep;
 	@NotEmpty(message = "Rua não pode ser vazio.")
 	private String rua;
@@ -18,6 +18,8 @@ public class EnderecoDTORequest {
 	private String cidade;
 	@NotEmpty(message = "Estado não pode ser vazio.")
 	private String estado;
+	@NotNull(message = "ClienteId não pode ser vazio")
+	private Long clienteId;
 
 	public Integer getCep() {
 		return cep;
@@ -67,4 +69,12 @@ public class EnderecoDTORequest {
 		this.estado = estado;
 	}
 
+	public Long getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(Long clienteId) {
+		this.clienteId = clienteId;
+	}
+	
 }

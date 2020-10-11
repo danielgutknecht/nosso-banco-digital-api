@@ -23,31 +23,31 @@ public class Cliente {
 	private String nome;
 	private String sobrenome;
 	private String email;
-	private Integer cnh;
+	private String cpf;
 	private LocalDate dataNascimento;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="status", nullable = true)
+	@Column(name = "status", nullable = true)
 	private StatusEnum status;
 
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Endereco> endereco;
-	
+
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<ImageFile> imagem;
-	
+	private Set<Documento> imagem;
+
 	public Cliente() {
-		
+
 	}
-	
-	public Cliente(Long id, String nome, String sobrenome, String email, Integer cnh, LocalDate dataNascimento,
-			StatusEnum status, Set<Endereco> endereco, Set<ImageFile> imagem) {
+
+	public Cliente(Long id, String nome, String sobrenome, String email, String cpf, Integer cnh,
+			LocalDate dataNascimento, StatusEnum status, Set<Endereco> endereco, Set<Documento> imagem) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
-		this.cnh = cnh;
+		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.status = status;
 		this.endereco = endereco;
@@ -86,15 +86,15 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Integer getCnh() {
-		return cnh;
+	@Column(name = "cpf", unique = true)
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCnh(Integer cnh) {
-		this.cnh = cnh;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
@@ -119,12 +119,21 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	public Set<ImageFile> getImagem() {
+	public Set<Documento> getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(Set<ImageFile> imagem) {
+	public void setImagem(Set<Documento> imagem) {
 		this.imagem = imagem;
 	}
-		
+	
+	public void autorizar() {
+		setStatus(StatusEnum.ACEITO);
+	}
+	
+	public void negar() {
+		setStatus(StatusEnum.NEGADO);
+	}
+
+
 }
