@@ -1,7 +1,5 @@
 package nossobancodigital.zup.endpoint.v1.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
@@ -10,12 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import nossobancodigital.zup.endpoint.v1.dto.response.ClienteDTOResponse;
 import nossobancodigital.zup.endpoint.v1.dto.response.PropostaDTO;
 import nossobancodigital.zup.endpoint.v1.mapper.ClienteMapper;
 import nossobancodigital.zup.endpoint.v1.mapper.PropostaMapper;
-import nossobancodigital.zup.entities.Cliente;
 import nossobancodigital.zup.services.ClienteService;
 import nossobancodigital.zup.services.EnderecoService;
 

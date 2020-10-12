@@ -1,6 +1,7 @@
 package nossobancodigital.zup.entities;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,10 +32,10 @@ public class Cliente {
 	private StatusEnum status;
 
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Endereco> endereco;
+	private Set<Endereco> endereco = new HashSet<>();
 
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Documento> imagem;
+	private Set<Documento> imagem = new HashSet<>();
 
 	public Cliente() {
 
